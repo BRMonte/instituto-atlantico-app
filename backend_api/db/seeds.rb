@@ -1,6 +1,6 @@
 require 'faker'
 
-10.times do
+25.times do
   Movie.create(
     title: Faker::Movie.title,
     plot: Faker::Lorem.paragraph)
