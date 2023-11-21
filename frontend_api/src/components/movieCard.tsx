@@ -1,5 +1,5 @@
 import { IMovie } from '../types/data';
-export const Movie = (props: IMovie) => (
+export const MovieCard = (props: IMovie) => (
   <>
     <h2>{props.title}</h2>
     <p>{props.plot}</p>
