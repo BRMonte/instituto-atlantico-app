@@ -1,4 +1,4 @@
-import { MovieList } from '../components/movieList'
+import { MovieList } from '../components/movieList/movieList'
 
 export const HomePage = () => {
   return (

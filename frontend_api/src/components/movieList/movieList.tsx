@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
-import { MovieCard } from "./movieCard"
-// import { PostForm } from '../Posts/PostForm'
-import { IMovie } from "../types/data"
+import { MovieCard } from "../movieCard/movieCard"
+import { SearchBox } from "../searchBox/searchBox"
+// import { MovieForm } from '../movieForm/movieForm'
+import { IMovie } from "../../types/data"
+import './style.css';
 import axios from 'axios';
 
 export const MovieList = () => {
@@ -27,9 +29,9 @@ export const MovieList = () => {
     }
   }
 
-  // const updateMovieList = (post: IMovie) => {
+  // const updateMovieList = (movie: IMovie) => {
   //   let _movies = movies;
-  //   _movies.unshift(post);
+  //   _movies.unshift(movie);
   //   setMovies(_movies);
 
   //   setUpdate(true)
@@ -37,16 +39,17 @@ export const MovieList = () => {
 
   return (
     <>
-      {/* <PostForm updatePostList={updatePostList} /> */}
-
-      <h1>Movie List</h1>
-      {movies.map((movie: IMovie) => (
-        <MovieCard
-          key={movie.id}
-          title={movie.title}
-          plot={movie.plot}
-        />
-      ))}
+      {/* <MovieForm updateMovieList={updateMovieList} /> */}
+      <SearchBox />
+      <div className="grid-container">
+        {movies.map((movie: IMovie) => (
+          <MovieCard
+            key={movie.id}
+            title={movie.title}
+            plot={movie.plot}
+          />
+        ))}
+      </div>
     </>
   )
 }
