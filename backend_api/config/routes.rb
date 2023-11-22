@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  root 'pages#index'
+
   namespace :api do
     namespace :v1 do
       resources :movies
+      resources :ratings, only: %i[create destroy]
     end
   end
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  get '*path', to: 'pages#index', via: :all
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  get "up" => "rails/health#show", as: :rails_health_check
 end
