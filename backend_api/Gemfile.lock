@@ -124,6 +124,8 @@ GEM
     msgpack (1.7.2)
     multi_xml (0.6.0)
     mutex_m (0.2.0)
+    net-http (0.4.0)
+      uri
     net-imap (0.4.5)
       date
       net-protocol
@@ -212,6 +214,7 @@ GEM
     timeout (0.4.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uri (0.13.0)
     webrick (1.8.1)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -229,6 +232,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   httparty
+  net-http
   pg (~> 1.1)
   puma (>= 5.0)
   rack-cors

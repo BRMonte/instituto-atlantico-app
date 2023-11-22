@@ -2,8 +2,7 @@ class Api::V1::MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show update destroy ]
 
   def index
-    @movies = Services::FetchMoviesService.perform.limit(10)
-
+    @movies = Movie.all
     render json: @movies
   end
 
