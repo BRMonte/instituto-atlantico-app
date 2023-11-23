@@ -4,12 +4,13 @@ module Api
       before_action :set_movie, only: %i[ show update destroy ]
 
       def index
-        @movies = FetchMoviesService.perform
-        render json: @movies
+        movies = Movie.all
+        # render json: movies
+        render json: MovieSerializer.new(movies).serialized_json
       end
 
       def show
-        render json: @movie
+        render json: MovieSerializer.new(@movie).serialized_json
       end
 
       def create
@@ -31,17 +32,22 @@ module Api
       end
 
       def destroy
-        @movie.destroy!
+        if @movie.destroy
+          head :no_content
+        else
+          render json: { error: @movie.errors.messages}, status: :unprocessable_entity
+        end
       end
 
       private
-        def set_movie
-          @movie = Movie.find(params[:id])
-        end
 
-        def movie_params
-          params.require(:movie).permit(:title, :plot)
-        end
+      def set_movie
+        @movie = Movie.find(params[:id])
+      end
+
+      def movie_params
+        params.require(:movie).permit(:title, :plot, :image_url)
+      end
     end
   end
 end
