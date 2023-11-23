@@ -4,7 +4,7 @@ class Movie < ApplicationRecord
   before_create :slugfy
 
   def slugfy
-    self.slug = title.parametrize
+    self.slug = title.parameterize
   end
 
   def average_score
