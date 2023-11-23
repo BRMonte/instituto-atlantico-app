@@ -4,10 +4,11 @@ export const MovieCard = (props: IMovie) => (
   <>
     <div className="card">
       <div className="name">{props.title}</div>
-      <img src="https://images.unsplash.com/photo-1536323760109-ca8c07450053" alt="Lago di Braies" />
+      <img src={props.imageUrl} alt="movie cover" />
       <div className="card__details">
         <span className="tag">Nature</span>
         <span className="tag">Lake</span>
+        <span className="tag">{props.score}</span>
       </div>
     </div>
   </>

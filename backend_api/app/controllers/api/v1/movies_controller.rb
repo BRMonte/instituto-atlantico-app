@@ -1,12 +1,12 @@
 module Api
   module V1
     class MoviesController < ApplicationController
-      before_action :set_movie, only: %i[ show update destroy ]
+      before_action :set_movie, only: %i[show update destroy]
 
       def index
         movies = Movie.all
-        # render json: movies
-        render json: MovieSerializer.new(movies).serialized_json
+
+        render json: movies
       end
 
       def show

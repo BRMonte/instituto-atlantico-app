@@ -2,9 +2,9 @@ import { useState, useEffect } from "react"
 import { MovieCard } from "../movieCard/movieCard"
 import { SearchBox } from "../searchBox/searchBox"
 // import { MovieForm } from '../movieForm/movieForm'
+import getMovieIndex from '../../client/getMovieIndex'
 import { IMovie } from "../../types/data"
 import './style.css';
-import axios from 'axios';
 
 export const MovieList = () => {
   const [movies, setMovies] = useState<IMovie[]>([])
@@ -16,17 +16,8 @@ export const MovieList = () => {
   }, [isUpdate])
 
   const getMovies = async () => {
-    try {
-      const response = await axios
-        .get('http://localhost:3000/api/v1/movies')
-
-      const data = response.data
-
-      setMovies(data.reverse())
-
-    } catch(error: any) {
-      console.log(error)
-    }
+    const data = getMovieIndex();
+    setMovies(await data)
   }
 
   // const updateMovieList = (movie: IMovie) => {
@@ -47,6 +38,8 @@ export const MovieList = () => {
             key={movie.id}
             title={movie.title}
             plot={movie.plot}
+            imageUrl={movie.imageUrl}
+            score={movie.score}
           />
         ))}
       </div>
