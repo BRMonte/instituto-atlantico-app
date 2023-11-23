@@ -1,4 +1,4 @@
 class RatingSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :score
+  attributes :score, :id
 end
